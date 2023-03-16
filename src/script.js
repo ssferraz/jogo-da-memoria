@@ -90,10 +90,13 @@ function setImagens() {
 
           ref.innerHTML = `<img src=${icones.pop()}></img>`;
       }
-  }
+  } 
 
 }
 
-function capturaClick() {
-
+function capturaClick(element, pos) {
+  element.style.display = 'none';
+  var card = document.getElementById(pos);
+  card.style.backfaceVisibility = 'visible';
+  // document.querySelectorAll(`[data-name*="funnel-chart-percent"]`)
 }
