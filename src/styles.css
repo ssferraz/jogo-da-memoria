@@ -1,0 +1,75 @@
+:root {
+    --body-color: #EADDCA;
+    --table-color: #7B3F00;
+    --card-color: #6F4E37;
+    --card-flipped-color: #C19A6B;
+    --border-radius: 10px;
+    --font-family: 'Press Start 2P';
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+h1 {
+    font-family: var(--font-family), cursive;
+    text-align: center;
+}
+
+table {
+    border-radius: var(--border-radius);
+    background-color: var(--table-color);
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+
+.card {
+    border-radius: 10px;
+	background-color: var(--card-flipped-color);
+	position: relative;
+	width: 100%;
+	height: 100%;
+	perspective: 1000px;
+}
+
+.card.back {
+    background-image: url(./assets/images/card.png);
+    background-size: contain;
+    cursor: pointer;
+}
+
+.card.flipped {
+    border: 2px solid var(--card-flipped-color);
+    background-color: var(--card-color);
+}
+
+.score {
+    font-family: var(--font-family), cursive;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+input[type="button"] {
+    font-family: var(--font-family), cursive;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    background-color: #4c4c4c;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 25px;
+}
