@@ -42,12 +42,14 @@ td {
     background-image: url(./assets/images/card.png);
     background-size: contain;
     cursor: pointer;
+    
 }
 
 .card.flipped {
-    border: 2px solid var(--card-flipped-color);
     background-color: var(--card-color);
+    background-size: contain;
 }
+
 
 .score {
     font-family: var(--font-family), cursive;
