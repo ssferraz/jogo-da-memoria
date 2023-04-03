@@ -1,102 +1,140 @@
-const cards = document.querySelectorAll('.card');
+var button_start = document.getElementById('start-button');
+var cards = document.querySelectorAll('.card');
 
-let flippedCard = false;
+var images = ['./assets/images/abacaxi.png', './assets/images/abacaxi.png',
+    './assets/images/banana.png', './assets/images/banana.png',
+    './assets/images/coco.png', './assets/images/coco.png',
+    './assets/images/laranja.png', './assets/images/laranja.png',
+    './assets/images/limao.png', './assets/images/limao.png',
+    './assets/images/melancia.png', './assets/images/melancia.png',
+    './assets/images/morango.png', './assets/images/morango.png',
+    './assets/images/uva.png', './assets/images/uva.png'];
+
+var images_embaralhadas = [];
+
+var array2 = [
+    { pos: '1a', img: '' }, { pos: '1b', img: '' }, { pos: '1c', img: '' }, { pos: '1d', img: '' },
+    { pos: '2a', img: '' }, { pos: '2b', img: '' }, { pos: '2c', img: '' }, { pos: '2d', img: '' },
+    { pos: '3a', img: '' }, { pos: '3b', img: '' }, { pos: '3c', img: '' }, { pos: '3d', img: '' },
+    { pos: '4a', img: '' }, { pos: '4b', img: '' }, { pos: '4c', img: '' }, { pos: '4d', img: '' }
+];
+
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        array2[i].img = arr[i];
+    }
+    return arr;
+}
+
+let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
+let progress = 0.0;
+let tentativas = 0;
 
-function flipCard() {
-  this.classList.add('flipped');
+function flipCard(ref) {
+    if (lockBoard) return;
+    if (ref === firstCard) return;
 
-  if (!flippedCard) {
-    flippedCard = true;
-    firstCard = this;
-  } else {
-    flippedCard = false;
-    secondCard = this;
+    if (!hasFlippedCard) {
+        hasFlippedCard = true;
+        firstCard = ref;
+        return firstCard;
+    }
+
+    secondCard = ref;
     checkForMatch();
-  }
 }
 
 function checkForMatch() {
-  if (firstCard.dataset.framework === secondCard.dataset.framework) {
-    disableCards();
-  } else {
-    unflipCards();
-  }
+    tentativas += 1;
+    document.getElementById('tentativas').textContent = tentativas;
+    if (firstCard.getAttribute('style') === secondCard.getAttribute('style')) {
+        disableCards();
+    } else {
+        unflipCards();
+    }
+
+    checkIfFinished();
+
+}
+
+function checkIfFinished() {
+    if (progress === 100) {
+        setTimeout(function () {
+            var response = window.confirm("Parabéns! Você venceu.");
+            if (response) {
+                location.reload();
+            }
+        }, 1005);
+    }
 }
 
 function disableCards() {
-  firstCard.removeEventListener('click', flipCard);
-  secondCard.removeEventListener('click', flipCard);
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+
+    progress += 12.5;
+    document.getElementById('progress').textContent = progress;
+
+    resetBoard();
 }
 
 function unflipCards() {
-  setTimeout(() => {
-    firstCard.classList.remove('flipped');
-    secondCard.classList.remove('flipped');
-  }, 1000);
+    lockBoard = true;
+
+    setTimeout(() => {
+        firstCard.style.removeProperty("background-image");
+        firstCard.classList.replace('flipped', 'back');
+        secondCard.style.removeProperty("background-image");
+        secondCard.classList.replace('flipped', 'back');
+        resetBoard();
+    }, 1000);
+
 }
 
-cards.forEach(card => card.addEventListener('click', flipCard));
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
 
-var matriz = [
-  ['1a', '1b', '1c', '1d'],
-  ['2a', '2b', '2c', '2d'],
-  ['3a', '3b', '3c', '3d'],
-  ['4a', '4b', '4c', '4d']
-];
-
-var icones = ['../assets/images/abacaxi.png', '../assets/images/abacaxi.png', 
-              '../assets/images/banana.png', '../assets/images/banana.png', 
-              '../assets/images/coco.png', '../assets/images/coco.png', 
-              '../assets/images/laranja.png', '../assets/images/laranja.png',  
-              '../assets/images/limao.png', '../assets/images/limao.png', 
-              '../assets/images/melancia.png', '../assets/images/melancia.png', 
-              '../assets/images/morango.png', '../assets/images/morango.png', 
-              '../assets/images/uva.png', '../assets/images/uva.png'];
-
-var button_start = document.getElementById('start-button');
 button_start.addEventListener('click', function (e) {
-  setImagens();
-})
+    button_start.disabled = true;
 
-function shuffleArray(arr) {
-  // Loop em todos os elementos
-  for (let i = arr.length - 1; i > 0; i--) {
-      // Escolhendo elemento aleatório
-      const j = Math.floor(Math.random() * (i + 1));
-      // Reposicionando elemento
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  // Retornando array com aleatoriedade
-  return arr;
-}
+    cards.forEach(card => {
+        card.classList.replace('empty', 'back');
+    });
 
-function setImagens() {
-  //<img src="../assets/images/card.png">
+    images = shuffleArray(images);
 
-  var icones = ['../assets/images/abacaxi.png', '../assets/images/abacaxi.png', 
-              '../assets/images/banana.png', '../assets/images/banana.png', 
-              '../assets/images/coco.png', '../assets/images/coco.png', 
-              '../assets/images/laranja.png', '../assets/images/laranja.png',  
-              '../assets/images/limao.png', '../assets/images/limao.png', 
-              '../assets/images/melancia.png', '../assets/images/melancia.png', 
-              '../assets/images/morango.png', '../assets/images/morango.png', 
-              '../assets/images/uva.png', '../assets/images/uva.png'];
+    button_start.removeEventListener("click", e);
 
-  icones = shuffleArray(icones);
-  for (var linha = 0; linha < 4; linha++) {
-      for (var coluna = 0; coluna < 4; coluna++) {
-          var ref = document.getElementById(matriz[linha][coluna]);
+    button_start.style.display = 'none';
+});
 
-          ref.innerHTML = `<img src=${icones.pop()}></img>`;
-      }
-  } 
 
-}
 
-function capturaClick(element, pos) {
-  element.style.display = 'none';
-  var card = document.getElementById(pos);
-  card.style.backfaceVisibility = 'visible';
-  // document.querySelectorAll(`[data-name*="funnel-chart-percent"]`)
-}
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        if (card.classList.contains('flipped') || card.classList.contains('empty') || lockBoard) {
+            return;
+        };
+
+        var ref = document.getElementById(card.getAttribute('id'));
+        card.classList.replace('back', 'flipped');
+
+        for (let i = 0; i < array2.length; i++) {
+
+            if (array2[i].pos === ref.id) {
+                ref.style.backgroundImage = `url(${array2[i].img})`;
+                break;
+            }
+        }
+        flipCard(ref);
+    });
+});
