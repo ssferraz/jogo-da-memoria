@@ -12,9 +12,6 @@ https://ssferraz.github.io/jogo-da-memoria/
 <h2 id="contribuidores"> 👷 Contribuidores </h2>
 
 - [@ssferraz](https://github.com/ssferraz) como Samuel Ferraz (Desenvolvedor)
-- [@victoorraphael](https://github.com/victoorraphael) como Victor Raphael (Desenvolvedor)
-- [@lyra-solfieri](https://github.com/lyra-solfieri) como Bruno Lyra (Desenvolvedor)
+- [@joaopvgus](https://github.com/joaopvgus) como João Pedro (Desenvolvedor)
 - [@jerickleandro](https://github.com/jerickleandro) como Erick Leandro (Desenvolvedor)
-- [@raffaelcsar](https://github.com/jerickleandro) como Raffael César (Desenvolvedor)
-- [@JoaoVictorLacerda](https://github.com/JoaoVictorLacerda) como João Victor Lacerda (
-  Desenvolvedor)
+- [@ThiagoMDM](https://github.com/ThiagoMDM) como Thiago Monteiro de Melo (Desenvolvedor)
