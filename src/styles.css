@@ -1,8 +1,8 @@
 :root {
     --body-color: #EADDCA;
     --table-color: #7B3F00;
-    --card-color: #6F4E37;
-    --card-flipped-color: #C19A6B;
+    --card-color: #C19A6B;
+    --card-flipped-color: #6F4E37;
     --border-radius: 10px;
     --font-family: 'Press Start 2P';
 }
@@ -25,39 +25,58 @@ table {
 
 td {
     width: 100px;
+    /* tamanho padrão do td */
     height: 100px;
+    /* altura automática para ajustar o conteúdo */
     padding: 5px;
+    /* cria um espaço acima do conteúdo */
 }
 
 .card {
     border-radius: 10px;
-	background-color: var(--card-flipped-color);
-	position: relative;
-	width: 100%;
-	height: 100%;
-	perspective: 1000px;
+    position: flex;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.card.empty {
+    background-color: var(--card-color);
+
 }
 
 .card.back {
     background-image: url(./assets/images/card.png);
-    background-size: contain;
+    background-size: cover;
     cursor: pointer;
-    
+    background-color: var(--card-color);
+    background-repeat: no-repeat;
 }
 
 .card.flipped {
-    background-color: var(--card-color);
-    background-size: contain;
+    background-color: var(--card-flipped-color);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-
-.score {
-    font-family: var(--font-family), cursive;
+.container {
     display: flex;
-    margin: 0 auto;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 10px;
+}
+
+.container p {
+    font-family: var(--font-family), cursive;
+    display: inline-block;
+}
+
+.progress {
+    margin-left: 10px;
+}
+
+.tentativas {
+    margin-right: 10px;
 }
 
 input[type="button"] {
@@ -74,4 +93,133 @@ input[type="button"] {
     color: #fff;
     cursor: pointer;
     margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+footer ul {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    list-style: none;
+    padding: 0;
+}
+
+footer li {
+    margin-right: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 0px 5px 5px 5px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.content {
+    margin-bottom: 50px;
+}
+
+@media (max-width: 320px) {
+    td {
+        width: 66px;
+        height: 66px;
+    }
+
+    .container p {
+        font-size: xx-small;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+    td {
+        width: 66px;
+        height: 66px;
+    }
+
+    .container p {
+        font-size: xx-small;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 426px) {
+    td {
+        width: 79.8px;
+        height: 79.8px;
+    }
+
+    .container p {
+        font-size: x-small;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    td {
+        width: 100px;
+        height: 100px;
+    }
+
+    .container p {
+        font-size: medium;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    td {
+        width: 100px;
+        height: 100px;
+    }
+
+    .container p {
+        font-size: medium;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+    td {
+        width: 100px;
+        height: 100px;
+    }
+
+    .container p {
+        font-size: larger;
+    }
+}
+
+@media (min-width: 1921px) {
+    td {
+        width: 100px;
+        height: 100px;
+    }
+
+    .container p {
+        font-size: larger;
+    }
 }

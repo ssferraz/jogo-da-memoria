@@ -13,68 +13,82 @@
 
 <body>
 	<h1>Jogo da Memória</h1>
-
-	<table>
-		<tr>
-			<td>
-				<div class="card" id="1a"></div>
-			</td>
-			<td>
-				<div class="card" id="1b"></div>
-			</td>
-			<td>
-				<div class="card" id="1c"></div>
-			</td>
-			<td>
-				<div class="card" id="1d"></div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="card" id="2a"></div>
-			</td>
-			<td>
-				<div class="card" id="2b"></div>
-			</td>
-			<td>
-				<div class="card" id="2c"></div>
-			</td>
-			<td>
-				<div class="card" id="2d"></div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="card" id="3a"></div>
-			</td>
-			<td>
-				<div class="card" id="3b"></div>
-			</td>
-			<td>
-				<div class="card" id="3c"></div>
-			</td>
-			<td>
-				<div class="card" id="3d"></div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="card" id="4a"></div>
-			</td>
-			<td>
-				<div class="card" id="4b"></div>
-			</td>
-			<td>
-				<div class="card" id="4c"></div>
-			</td>
-			<td>
-				<div class="card" id="4d"></div>
-			</td>
-		</tr>
-	</table>
-
-	<p class="score">Pontuação: <span id="points">0</span></p>
 	<input id="start-button" type="button" value="Começar"></input>
+	<div class="content">
+		<table>
+			<tr>
+				<td>
+					<div class="card empty" id="1a"></div>
+				</td>
+				<td>
+					<div class="card empty" id="1b"></div>
+				</td>
+				<td>
+					<div class="card empty" id="1c"></div>
+				</td>
+				<td>
+					<div class="card empty" id="1d"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="card empty" id="2a"></div>
+				</td>
+				<td>
+					<div class="card empty" id="2b"></div>
+				</td>
+				<td>
+					<div class="card empty" id="2c"></div>
+				</td>
+				<td>
+					<div class="card empty" id="2d"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="card empty" id="3a"></div>
+				</td>
+				<td>
+					<div class="card empty" id="3b"></div>
+				</td>
+				<td>
+					<div class="card empty" id="3c"></div>
+				</td>
+				<td>
+					<div class="card empty" id="3d"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="card empty" id="4a"></div>
+				</td>
+				<td>
+					<div class="card empty" id="4b"></div>
+				</td>
+				<td>
+					<div class="card empty" id="4c"></div>
+				</td>
+				<td>
+					<div class="card empty" id="4d"></div>
+				</td>
+			</tr>
+		</table>
+
+		<div class="container">
+			<p class="tentativas">Tentativas: <span id="tentativas">0</span></p>
+			<p class="progress">Progresso: <span id="progress">0</span>%</p>
+		</div>
+
+	</div>
+	<footer>
+		<ul>
+			<li>Desenvolvido por:</li>
+			<li><a href="https://github.com/ssferraz">Samuel Ferraz @ssferraz</a></li>
+			<li><a href="https://github.com/joaopvgus">João Pedro @joaopvgus</a></li>
+			<li><a href="https://github.com/jerickleandro">Erick Leandro @jerickleandro</a></li>
+			<li><a href="https://github.com/ThiagoMDM">Thiago Melo @ThiagoMDM</a></li>
+		</ul>
+	</footer>
 
 	<script src="script.js"></script>
 </body>
